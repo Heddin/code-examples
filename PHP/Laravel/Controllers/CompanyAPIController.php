@@ -136,13 +136,6 @@ class CompanyAPIController extends Controller
             $purchased->course->short_letter = $purchased->course->getFirstLetter();
         }
 
-//        foreach ($company->assigned_courses as $course){
-//
-//            $course->user->statistics = $course->user->get_statistics();
-//            $course->user->statistics = $course->user->statistics
-//                                                ->where($course->id)->first();
-//        }
-
         $company->count_users = $company->members->count();
         $company->courses_count = $company->purchased_courses->count();
 
@@ -473,9 +466,9 @@ class CompanyAPIController extends Controller
                     $message = "Компания {$company->name} назначила Вам прохождение :  {$course->name}.";
                     $message = $message . "\n\rКликните по ссылке чтобы перейти к курсу: " . $url;
                     $message = $message . "\n\rЭто письмо сформировано автоматически. Пожалуйста, не отвечайте на него.";
-                    $message = $message . "\n\rЕсли у Вас есть вопросы, Вы можете обратиться по электронной почте client@skill.im.";
+                    $message = $message . "\n\rЕсли у Вас есть вопросы, Вы можете обратиться по электронной почте client@mail.com.";
 
-                    $member->profile->sendMail($message, "{$course->name}", "notificator@skill.im", "Skill.im");
+                    $member->profile->sendMail($message, "{$course->name}", "notificator@mail.com", "Courses");
                 }
                 break;
             case 'pretest' :
@@ -499,11 +492,11 @@ class CompanyAPIController extends Controller
                     $message = "Компания {$company->name} назначила Вам прохождение : Предварительное тестирование для {$pretest->category->name}.";
                     $message = $message . "\n\rКликните по ссылке чтобы перейти к предварительному тесту: " . $url;
                     $message = $message . "\n\rЭто письмо сформировано автоматически. Пожалуйста, не отвечайте на него.";
-                    $message = $message . "\n\rЕсли у Вас есть вопросы, Вы можете обратиться по электронной почте client@skill.im.";
+                    $message = $message . "\n\rЕсли у Вас есть вопросы, Вы можете обратиться по электронной почте client@mail.com.";
 
 
                     $cupa->save();
-                    $member->profile->sendMail($message, "Предварительное тестирование для {$pretest->category->name}", "notificator@skill.im", "Skill.im");
+                    $member->profile->sendMail($message, "Предварительное тестирование для {$pretest->category->name}", "notificator@mail.com.im", "Courses");
 
                 }
                 break;
